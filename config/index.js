@@ -6,12 +6,7 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
-    // Paths
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {},
-
+    env: require('./dev.env'),
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -19,8 +14,18 @@ module.exports = {
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
-    
+    // Paths
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {
+      '/api/*': { // 将所有以/api 开头的请求通过target来代理。比如将 /api/posts/1 用 http://120.79.188.29/posts/1 代理
+        target: 'http://localhost:8081', // 接口地址
+        changeOrigin: true, // 如果为true,本地会虚拟一个服务端接收你的请求并代替你发送该请求
+        pathRewrite: {
+          '^/api': '/api' // 在真正请求的时候去掉/api标识
+        }
+      },
+    },
     /**
      * Source Maps
      */

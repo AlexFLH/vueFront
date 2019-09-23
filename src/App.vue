@@ -1,28 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
+
 <script>
-  //导入组件
-  import HelloWorld from "./components/HelloWorld";
   export default {
-    name: 'app',
-    components: {
-      HelloWorld
-    }
+    name: 'App'
   }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import "./style/reset.css";
+  @import "./style/mixin.scss";
+  @import "./style/style.scss";
 </style>
