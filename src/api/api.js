@@ -8,7 +8,14 @@ export const Login = params => axios.get(`/api/login`,
     }
   });
 
-export const getUser = params => { return axios.get(`/user`, { params: params }); };
+export const getUser = params => axios.get('/api/getUserInfo',
+  {
+    params:{
+      passport: params.passport
+    }
+  })
+
+export const getUser1 = params => { return axios.get(`/user`, { params: params }); };
 export const editUserSelf = params => { return axios.post(`/user/edit_self`, params).then(res => res.data); };
 export const editPwd = params => { return axios.post(`/user/editPwd`, params).then(res => res.data); };
 

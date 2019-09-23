@@ -211,9 +211,9 @@
 
       // 获取个人信息
       getUser: function () {
-        let para = {username: this.sysUserName}
+        let para = {passport: this.sysUserName}
         getUser(para).then((res) => {
-          this.editUser = res.data.user;
+          this.editUser = res.data.passport;
         })
       },
       // 打开个人信息
