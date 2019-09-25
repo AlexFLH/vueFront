@@ -1,10 +1,14 @@
 <template>
-    <div class="test">
-        <h1>This is a test page</h1>
-    </div>
+  <el-row style="position: absolute">
+    <el-col :span="24" class="test" style="position: relative">
+      <div type = "text" >请输入查询内容id:
+        <input v-model="message" placeholder="请输入查询内容id" v-on:click=""></input>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 <script>
-import { Login } from '../../api/api'
+
 import mixin from '../../utils/mixin'
 export default {
   mixins: [mixin],
@@ -14,6 +18,9 @@ export default {
         }
     },
     methods: {
+      findResult() {
+
+      }
     }
 }
 </script>
