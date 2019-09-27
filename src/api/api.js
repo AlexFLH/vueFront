@@ -15,6 +15,12 @@ export const getUser = params => axios.get('/api/getUserInfo',
     }
   })
 
+export const getContentTrace = params => axios.get('/api/getContentTrace', {
+  params: {
+    contentId: params.contentId
+  }
+})
+
 export const getUser1 = params => { return axios.get(`/user`, { params: params }); };
 export const editUserSelf = params => { return axios.post(`/user/edit_self`, params).then(res => res.data); };
 export const editPwd = params => { return axios.post(`/user/editPwd`, params).then(res => res.data); };
