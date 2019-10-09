@@ -37,11 +37,17 @@
         row-click-color="#edf7ff"
       ></v-table>
       <br>
-      <p>文章中图片如下：</p><br>
-      <div v-for="img0 in imgs">
-        <img v-bind:src = "img0.src" style="height: 150px;width: auto"/>
-      </div>
-
+      <p style="font-size: 16px">文章中图片如下：</p><br>
+      <img v-for="img0 in imgs" v-bind:src = "img0.src" style="height: 150px;width: 300px; border-collapse: inherit" />
+      <!--<ul>-->
+        <!--<li v-for="img0 in imgs">-->
+          <!--<img v-bind:src = "img0.src" style="height: 150px;width: auto"/>-->
+          <!--<img v-for="img0 in imgs" v-bind:src = "img0.src" style="height: 150px;width: auto"/>-->
+        <!--</li>-->
+        <!--&lt;!&ndash;<div v-for="img0 in imgs">&ndash;&gt;-->
+          <!--&lt;!&ndash;<img v-bind:src = "img0.src" style="height: 150px;width: auto"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</ul>-->
     </div>
   </div>
 </template>
