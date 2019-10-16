@@ -7,6 +7,7 @@ const Home = () => import ('@/pages/home/home');
 const User = () => import ('@/pages/user/user');
 const Chart = () => import ('@/pages/echart/echart');
 const Test = () => import ('@/pages/test/test');
+const Tracer = () => import ('@/pages/tracer/tracer');
 
 Vue.use(Router)
 
@@ -18,24 +19,25 @@ export default new Router({
       component: Login,
       hidden: true
     },
+    // {
+    //   path: '/',
+    //   name: '',
+    //   component: Home,
+    //   iconCls: 'fa fa-users',
+    //   leaf: true,
+    //   children: [
+    //     { path: '/user', component: User, name: '用户管理' }
+    //   ]
+    // },
     {
       path: '/',
-      name: '',
-      component: Home,
-      iconCls: 'fa fa-users',
-      leaf: true,
-      children: [
-        { path: '/user', component: User, name: '用户管理' }
-      ]
-    },
-    {
-      path: '/',
-      name: '图表管理',
+      name: '问题追踪',
       component: Home,
       iconCls: 'fa fa-users',
       children: [
-        { path: '/echart', component: Chart, name: '图表管理' },
-        { path: '/test', component: Test, name: '测试' }
+        // { path: '/echart', component: Chart, name: '图表管理' },
+        { path: '/test', component: Test, name: '内容查询' },
+        { path: '/tracer', component: Tracer, name: 'tracer解析' }
       ]
     },
   ]

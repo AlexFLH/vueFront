@@ -46,7 +46,7 @@
               } else {
                 this.$message.success(res.data.msg);
                 sessionStorage.setItem('username',JSON.stringify(this.form2.passport));
-                this.$router.push({ path: '/test'});
+                this.$router.push({ path: '/tracer'});
               }
           } else {
             return false;

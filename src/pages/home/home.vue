@@ -80,48 +80,48 @@
     </el-col>
 
     <!--个人信息-->
-    <el-dialog title="个人信息" :visible.sync="editUserVisible" :close-on-click-modal="false">
-      <el-form :model="editUser" label-width="80px" :rules="editUserRules" ref="editUser">
-        <el-form-item label="用户名" prop="username">
-          <el-input type="text" maxlength="150" :disabled="true" v-model="editUser.username" auto-complete="off" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="联系电话" prop="telephone">
-          <el-input type="tel" maxlength="32" v-model="editUser.telephone" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="电子邮件" prop="email">
-          <el-input type="email" maxlength="254" v-model="editUser.email" clearable></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click.native="editUserVisible = false">取消</el-button>
-        <el-button type="primary" @click.native="editUserSubmit" :loading="userLoading">修改</el-button>
-      </div>
-    </el-dialog>
+    <!--<el-dialog title="个人信息" :visible.sync="editUserVisible" :close-on-click-modal="false">-->
+      <!--<el-form :model="editUser" label-width="80px" :rules="editUserRules" ref="editUser">-->
+        <!--<el-form-item label="用户名" prop="username">-->
+          <!--<el-input type="text" maxlength="150" :disabled="true" v-model="editUser.username" auto-complete="off" clearable></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="联系电话" prop="telephone">-->
+          <!--<el-input type="tel" maxlength="32" v-model="editUser.telephone" clearable></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="电子邮件" prop="email">-->
+          <!--<el-input type="email" maxlength="254" v-model="editUser.email" clearable></el-input>-->
+        <!--</el-form-item>-->
+      <!--</el-form>-->
+      <!--<div slot="footer" class="dialog-footer">-->
+        <!--<el-button @click.native="editUserVisible = false">取消</el-button>-->
+        <!--<el-button type="primary" @click.native="editUserSubmit" :loading="userLoading">修改</el-button>-->
+      <!--</div>-->
+    <!--</el-dialog>-->
 
     <!--修改密码-->
-    <el-dialog title="修改密码" :visible.sync="editPwdVisible" :close-on-click-modal="false">
-      <el-form :model="editPwd" label-width="100px" :rules="editPwdRules" ref="editPwd">
-        <el-form-item label="旧密码" prop="old_password">
-          <el-input type="password" v-model="editPwd.old_password" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="新密码" prop="new_password1">
-          <el-input type="password" v-model="editPwd.new_password1" clearable></el-input>
-        </el-form-item>
-        <el-form-item label="确认新密码" prop="new_password2">
-          <el-input type="password" v-model="editPwd.new_password2" clearable></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click.native="editPwdVisible = false">取消</el-button>
-        <el-button type="primary" @click.native="editPwdSubmit" :loading="pwdLoading">修改</el-button>
-      </div>
-    </el-dialog>
+    <!--<el-dialog title="修改密码" :visible.sync="editPwdVisible" :close-on-click-modal="false">-->
+      <!--<el-form :model="editPwd" label-width="100px" :rules="editPwdRules" ref="editPwd">-->
+        <!--<el-form-item label="旧密码" prop="old_password">-->
+          <!--<el-input type="password" v-model="editPwd.old_password" clearable></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="新密码" prop="new_password1">-->
+          <!--<el-input type="password" v-model="editPwd.new_password1" clearable></el-input>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item label="确认新密码" prop="new_password2">-->
+          <!--<el-input type="password" v-model="editPwd.new_password2" clearable></el-input>-->
+        <!--</el-form-item>-->
+      <!--</el-form>-->
+      <!--<div slot="footer" class="dialog-footer">-->
+        <!--<el-button @click.native="editPwdVisible = false">取消</el-button>-->
+        <!--<el-button type="primary" @click.native="editPwdSubmit" :loading="pwdLoading">修改</el-button>-->
+      <!--</div>-->
+    <!--</el-dialog>-->
 
   </el-row>
 </template>
 
 <script>
-  import { getUser, editUserSelf, editPwd } from '../../api/api';
+  import { getUser } from '../../api/api';
   import mixin from '../../utils/mixin'
   export default {
     mixins: [mixin],
