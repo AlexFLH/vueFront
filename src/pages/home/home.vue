@@ -127,7 +127,7 @@
     mixins: [mixin],
     data () {
       return {
-        sysName: 'VUEADMIN',
+        sysName: '线上问题定位系统',
         collapsed: false,
         sysUserName: '',
         form: {

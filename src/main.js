@@ -9,6 +9,11 @@ import 'font-awesome/css/font-awesome.min.css'
 import components from './components'
 import 'vue-easytable/libs/themes-base/index.css'
 import {VTable,VPagination} from 'vue-easytable'
+import VueVideoPlayer  from "vue-video-player/src"
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
+import hls from 'videojs-contrib-hls'
+
 
 // import Mock from './mock'
 // Mock.start();
@@ -18,6 +23,7 @@ import store from './store/index'
 
 Vue.use(ElementUI);
 Vue.use(components);
+Vue.use(hls)
 Vue.config.productionTip = false
 Vue.component(VTable.name, VTable)
 Vue.component(VPagination.name, VPagination)
