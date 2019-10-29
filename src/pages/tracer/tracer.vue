@@ -202,6 +202,21 @@
       ></v-table>
       <br>
     </div>
+
+    <div id = "resultForm4" v-if="type === 'special'">
+      <br>
+      <h3 style="font-size: 20px">专题基本信息如下：</h3><br>
+      <v-table
+        is-horizontal-resize
+        column-width-drag
+        title-bg-color="#CDCDC1"
+        :columns=specialColumns
+        style="width: auto"
+        :table-data=specialData
+        row-hover-color="#eee"
+        row-click-color="#edf7ff"
+      ></v-table>
+    </div>
   </div>
 </template>
 
@@ -310,6 +325,29 @@ export default {
             {field:"publishTime", title:'发布时间', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
             {field:"delStatus", title:'状态', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true }
         ],
+        specialData:[
+            {"sid":"",
+                "replyCount":"",
+                "specialType":"",
+                "sname":"",
+                "delStatus":"",
+                "banner":"",
+                "commentId":"",
+                "topicIds":"",
+                "ptime":""
+            }
+        ],
+        specialColumns:[
+            {field:"sid", title:'专题ID', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true},
+            {field:"replyCount", title:'跟贴数', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"specialType", title:'专题类型', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"sname", title:'专题名称', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"delStatus", title:'删除状态', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"banner", title:'banner', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"commentId", title:'跟贴ID', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"topicIds", title:'模块ID', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true },
+            {field:"ptime", title:'发布时间', width: 80, titleAlign: 'center',columnAlign:'center',isResize:true }
+        ],
         manualData:[
             {"manualReviewReason":"",
             "manualReviewEndTime":"",
@@ -411,7 +449,6 @@ export default {
                   this.fullData[0].manualStatus = baseInfo.manualStatus;
                   this.fullData[0].status = baseInfo.status;
                   this.fullData[0].modifyTime = baseInfo.modifyTime;
-                  this.type = baseInfo.type;
 
                   let rehearInfo = res.data.data.securityData.rehear;
                   this.rehearData[0].rehearStatus = rehearInfo.rehearStatus;
@@ -426,6 +463,20 @@ export default {
                   this.qualityData[0].qualityReviewOperator = qualityInfo.qualityReviewOperator;
                   this.qualityData[0].qualityReviewStartTime = qualityInfo.qualityReviewStartTime;
                   this.qualityData[0].qualityReviewEndTime = qualityInfo.qualityReviewEndTime;
+
+                  let manualInfo = res.data.data.securityData.security;
+                  this.manualData[0].manualReviewStatus = manualInfo.manualReviewStatus;
+                  this.manualData[0].manualReviewReason = manualInfo.manualReviewReason;
+                  this.manualData[0].manualReviewOperator = manualInfo.manualReviewOperator;
+                  this.manualData[0].manualReviewStartTime = manualInfo.manualReviewStartTime;
+                  this.manualData[0].manualReviewEndTime = manualInfo.manualReviewEndTime;
+
+                  let ruleInfo = res.data.data.securityData.rule;
+                  this.ruleData[0].ruleFilterStatus = ruleInfo.ruleFilterStatus;
+                  this.ruleData[0].ruleFilterType = ruleInfo.ruleFilterType;
+                  this.ruleData[0].ruleFilterReason = ruleInfo.ruleFilterReason;
+                  this.ruleData[0].ruleFilterStartTime = ruleInfo.ruleFilterStartTime;
+                  this.ruleData[0].ruleFilterEndTime = ruleInfo.ruleFilterEndTime;
               } else if (baseInfo.type === 'video') {
                   this.videoData[0].docId = baseInfo.docid;
                   this.videoData[0].docType = baseInfo.docType;
@@ -439,7 +490,6 @@ export default {
                   this.videoData[0].hits = baseInfo.hits;
                   this.videoData[0].isShow = baseInfo.isShow;
                   this.videoData[0].copyrighted = baseInfo.copyrighted;
-                  this.type = baseInfo.type;
 
                   let vulgarInfo = res.data.data.securityData.vulgar;
                   this.vulgarData[0].vulgarStatus = vulgarInfo.vulgarStatus;
@@ -459,6 +509,20 @@ export default {
                   this.qualityData[0].qualityReviewOperator = qualityInfo.qualityReviewOperator;
                   this.qualityData[0].qualityReviewStartTime = qualityInfo.qualityReviewStartTime;
                   this.qualityData[0].qualityReviewEndTime = qualityInfo.qualityReviewEndTime;
+
+                  let manualInfo = res.data.data.securityData.security;
+                  this.manualData[0].manualReviewStatus = manualInfo.manualReviewStatus;
+                  this.manualData[0].manualReviewReason = manualInfo.manualReviewReason;
+                  this.manualData[0].manualReviewOperator = manualInfo.manualReviewOperator;
+                  this.manualData[0].manualReviewStartTime = manualInfo.manualReviewStartTime;
+                  this.manualData[0].manualReviewEndTime = manualInfo.manualReviewEndTime;
+
+                  let ruleInfo = res.data.data.securityData.rule;
+                  this.ruleData[0].ruleFilterStatus = ruleInfo.ruleFilterStatus;
+                  this.ruleData[0].ruleFilterType = ruleInfo.ruleFilterType;
+                  this.ruleData[0].ruleFilterReason = ruleInfo.ruleFilterReason;
+                  this.ruleData[0].ruleFilterStartTime = ruleInfo.ruleFilterStartTime;
+                  this.ruleData[0].ruleFilterEndTime = ruleInfo.ruleFilterEndTime;
               } else if (baseInfo.type === 'recommend') {
                   this.recommendData[0].docId = baseInfo.docid;
                   this.recommendData[0].docType = baseInfo.docType;
@@ -469,22 +533,32 @@ export default {
                   this.recommendData[0].publisher = baseInfo.publisher;
                   this.recommendData[0].publishTime = baseInfo.publishTime;
                   this.recommendData[0].delStatus = baseInfo.delStatus;
-                  this.type = baseInfo.type;
+
+                  let manualInfo = res.data.data.securityData.security;
+                  this.manualData[0].manualReviewStatus = manualInfo.manualReviewStatus;
+                  this.manualData[0].manualReviewReason = manualInfo.manualReviewReason;
+                  this.manualData[0].manualReviewOperator = manualInfo.manualReviewOperator;
+                  this.manualData[0].manualReviewStartTime = manualInfo.manualReviewStartTime;
+                  this.manualData[0].manualReviewEndTime = manualInfo.manualReviewEndTime;
+
+                  let ruleInfo = res.data.data.securityData.rule;
+                  this.ruleData[0].ruleFilterStatus = ruleInfo.ruleFilterStatus;
+                  this.ruleData[0].ruleFilterType = ruleInfo.ruleFilterType;
+                  this.ruleData[0].ruleFilterReason = ruleInfo.ruleFilterReason;
+                  this.ruleData[0].ruleFilterStartTime = ruleInfo.ruleFilterStartTime;
+                  this.ruleData[0].ruleFilterEndTime = ruleInfo.ruleFilterEndTime;
+              } else if (baseInfo.type === 'special') {
+                  this.specialData[0].sid = baseInfo.sid;
+                  this.specialData[0].replyCount = baseInfo.replyCount;
+                  this.specialData[0].specialType = baseInfo.specialType;
+                  this.specialData[0].sname = baseInfo.sname;
+                  this.specialData[0].delStatus = baseInfo.delStatus;
+                  this.specialData[0].banner = baseInfo.banner;
+                  this.specialData[0].commentId = baseInfo.commentId;
+                  this.specialData[0].topicIds = baseInfo.topicIds;
+                  this.specialData[0].ptime = baseInfo.ptime;
               }
-
-              let manualInfo = res.data.data.securityData.security;
-              this.manualData[0].manualReviewStatus = manualInfo.manualReviewStatus;
-              this.manualData[0].manualReviewReason = manualInfo.manualReviewReason;
-              this.manualData[0].manualReviewOperator = manualInfo.manualReviewOperator;
-              this.manualData[0].manualReviewStartTime = manualInfo.manualReviewStartTime;
-              this.manualData[0].manualReviewEndTime = manualInfo.manualReviewEndTime;
-
-              let ruleInfo = res.data.data.securityData.rule;
-              this.ruleData[0].ruleFilterStatus = ruleInfo.ruleFilterStatus;
-              this.ruleData[0].ruleFilterType = ruleInfo.ruleFilterType;
-              this.ruleData[0].ruleFilterReason = ruleInfo.ruleFilterReason;
-              this.ruleData[0].ruleFilterStartTime = ruleInfo.ruleFilterStartTime;
-              this.ruleData[0].ruleFilterEndTime = ruleInfo.ruleFilterEndTime;
+              this.type = baseInfo.type;
           } else if(res.data.code !== 0) {
               alert(res.data.message);
           }

@@ -135,7 +135,7 @@ export default {
             {"title":"", "voteCount":"", "hits":"", "playCount":"", "replyCount":"", "topicSid":"", "length":"", "m3u8Hd_url":""}
         ],
         specialTableData:[
-            {"replyCount":"", "specialType":"", "sname":"", "banner":"", "commentId":"", "topicIds":"", "moduleSize":"", "ptime":"", "sid":""}
+            {"replyCount":"", "specialType":"","delStatus":"", "sname":"", "banner":"", "commentId":"", "topicIds":"", "moduleSize":"", "ptime":"", "sid":""}
         ],
         recommendTableData:[
             {"nick":"", "commentSwitchOn":"", "viewpoint":"", "passport":"", "praiseCount":"", "userId":"", "motifName":"", "ptime":"", "commentCount":"", "motifId":"",}
@@ -168,6 +168,7 @@ export default {
             {field:"sid", title:'专题ID', width: 150, titleAlign: 'center',columnAlign:'center',isResize:true},
             {field:"sname", title:'专题名称', width: 100, titleAlign: 'center',columnAlign:'center'},
             {field:"specialType", title:'专题类型', width: 80, titleAlign: 'center',columnAlign:'center'},
+            {field:"delStatus", title:'删除状态', width: 80, titleAlign: 'center',columnAlign:'center'},
             {field:"banner", title:'banner图', width: 150,titleAlign: 'center',columnAlign:'center',isResize:true},
             {field:"moduleSize", title:'模块数',  width: 80,titleAlign: 'center',columnAlign:'center',isResize:true},
             {field:"topicIds", title:'模块ID', width: 220, titleAlign: 'center',columnAlign:'center',isResize:true},
@@ -250,6 +251,7 @@ export default {
                   this.type = response.type;
                   this.specialTableData[0].replyCount = response.replyCount;
                   this.specialTableData[0].specialType = response.specialType;
+                  this.specialTableData[0].delStatus = response.delStatus;
                   this.specialTableData[0].sname = response.sname;
                   this.specialTableData[0].commentId = response.commentId;
                   this.specialTableData[0].topicIds = response.topicIds;
